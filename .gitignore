@@ -38,3 +38,9 @@ uploads/
 
 # Keep environment template in Git
 !.env.example
+
+# Ultralytics generated outputs
+runs/
+
+# Pretrained model weights
+*.pt
