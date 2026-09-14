@@ -35,3 +35,6 @@ uploads/
 
 # Database
 *.db
+
+# Keep environment template in Git
+!.env.example
