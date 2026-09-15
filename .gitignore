@@ -44,3 +44,7 @@ runs/
 
 # Pretrained model weights
 *.pt
+
+# Local ML datasets
+ml/data/raw/
+ml/data/processed/
