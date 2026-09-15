@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: accessibility-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: accessibility_db
+      POSTGRES_USER: accessibility_user
+      POSTGRES_PASSWORD: accessibility_dev_password
+
+    ports:
+      - "127.0.0.1:55432:5432"
+
+    volumes:
+      - accessibility_postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U accessibility_user -d accessibility_db"
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  accessibility_postgres_data:
