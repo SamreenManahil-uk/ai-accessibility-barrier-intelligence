@@ -1,0 +1,195 @@
+Day 5 Full Stack Integration and Deployment Notes
+
+Project Name
+
+AI Accessibility Barrier Intelligence
+
+Product Name
+
+PathSense AI
+
+Day 5 Objective
+
+Day 5 focused on full stack integration, Docker containerisation, testing, production style serving and final system verification.
+
+Docker Services
+
+The application uses three main Docker services.
+
+PostgreSQL database
+
+FastAPI backend
+
+React frontend served through Nginx
+
+PostgreSQL
+
+PostgreSQL version sixteen is used.
+
+The database name is accessibility underscore db.
+
+The database user is accessibility underscore user.
+
+The database uses a persistent Docker volume.
+
+The host development port is five five four three two.
+
+Backend Container
+
+The backend Docker container includes Python, FastAPI, Uvicorn, SQLAlchemy, Psycopg, PyTorch, Torchvision, Ultralytics, OpenCV and NumPy.
+
+The trained YOLO model weights are included in the backend container.
+
+Large training datasets are excluded from the Docker image.
+
+Inference Device
+
+The local Mac environment can use Apple MPS acceleration.
+
+Inside the Linux Docker container, the backend safely uses CPU when MPS or CUDA are unavailable.
+
+This makes the system portable.
+
+Frontend Container
+
+The frontend uses a multi stage Docker build.
+
+Node is used to build the React and Vite application.
+
+Nginx is used to serve the production frontend.
+
+The Vite development server is not used in the production style container.
+
+Nginx
+
+Nginx serves the React application.
+
+Nginx supports client side routing.
+
+Nginx forwards API requests to the FastAPI backend.
+
+Docker Compose
+
+Docker Compose manages PostgreSQL, the FastAPI backend and the React frontend.
+
+It also manages health checks, persistent database storage and uploaded file storage.
+
+The application frontend runs on localhost port eight zero eight zero.
+
+Health Verification
+
+The backend health endpoint was successfully tested through Nginx.
+
+The API returned an OK status and confirmed that the backend was running successfully.
+
+End to End Integration Verification
+
+A real image analysis was successfully completed using the Dockerised application.
+
+The verified test image was risky test dot jpg.
+
+The model detected Vehicle with approximately ninety percent confidence.
+
+The model detected Road Barrier with approximately seventy two percent confidence.
+
+An additional lower confidence Vehicle prediction was also returned.
+
+The final risk level was HIGH.
+
+The final risk score was six point three nine.
+
+This verified communication between the React frontend, Nginx, FastAPI, YOLO model, risk engine, SQLAlchemy and PostgreSQL.
+
+Database Persistence
+
+Analysis history was successfully retrieved from the API.
+
+The PostgreSQL database was also queried directly.
+
+Recent scan records were confirmed in the analyses table.
+
+New analyses contained real bounding box coordinates.
+
+Some older records contained zero coordinates because they were created before the bounding box feature was introduced.
+
+Smoke Testing
+
+A reusable smoke test script was added.
+
+The smoke test verifies frontend availability.
+
+It verifies backend health.
+
+It verifies the analysis history endpoint.
+
+It also checks Docker service status.
+
+Backend Testing
+
+Pytest was used for backend testing.
+
+Tests were created for the root endpoint.
+
+Tests were created for the health endpoint.
+
+Tests were created for low risk Sidewalk behaviour.
+
+Tests were created for high risk combined detections.
+
+The HIGH risk threshold is six.
+
+Vehicle has a risk weight of three.
+
+Road Barrier has a risk weight of four.
+
+A Vehicle prediction with ninety percent confidence contributes two point seven to the risk score.
+
+A Road Barrier prediction with eighty five percent confidence contributes three point four to the risk score.
+
+The combined score is six point one.
+
+This produces a HIGH risk level.
+
+Risk Engine Transparency
+
+The accessibility score is an explainable project specific heuristic.
+
+It is not a medical assessment.
+
+It is not a legal accessibility decision.
+
+It is not a formal accessibility certification.
+
+It is not a replacement for a professional accessibility audit.
+
+Day 5 Result
+
+By the end of Day 5, PathSense AI had become a containerised full stack application.
+
+The project includes a trained object detection model.
+
+It includes an explainable accessibility risk engine.
+
+It includes a FastAPI REST API.
+
+It includes PostgreSQL persistence.
+
+It includes an advanced React and TypeScript frontend.
+
+It includes real bounding box visualisation.
+
+It includes scan history and analytics.
+
+It includes model performance transparency.
+
+It includes light and dark themes.
+
+It includes frontend and backend automated tests.
+
+It includes Dockerised frontend, backend and database services.
+
+It includes Nginx reverse proxying.
+
+It includes Docker health checks and persistent storage.
+
+The project is suitable for portfolio demonstration and technical interview discussion while clearly documenting the current limitations of the model.

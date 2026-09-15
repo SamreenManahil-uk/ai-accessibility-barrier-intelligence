@@ -15,14 +15,47 @@ router = APIRouter(
 )
 
 
-def to_response(analysis: Analysis) -> AnalysisResponse:
+def normalize_detections(raw: list[dict]) -> list[dict]:
+    normalized = []
+
+    for item in raw:
+        normalized.append(
+            {
+                "label": item["label"],
+                "confidence": item["confidence"],
+                "bbox": item.get(
+                    "bbox",
+                    {
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 0,
+                        "y2": 0,
+                    },
+                ),
+            }
+        )
+
+    return normalized
+
+
+def to_response(
+    analysis: Analysis,
+) -> AnalysisResponse:
+    detections = normalize_detections(
+        json.loads(
+            analysis.detections_json
+        )
+    )
+
     return AnalysisResponse(
         id=analysis.id,
         image_name=analysis.image_name,
-        detections=json.loads(analysis.detections_json),
+        detections=detections,
         risk_level=analysis.risk_level,
         risk_score=analysis.risk_score,
-        reasons=json.loads(analysis.reasons_json),
+        reasons=json.loads(
+            analysis.reasons_json
+        ),
         created_at=analysis.created_at,
     )
 
@@ -34,11 +67,16 @@ def to_response(analysis: Analysis) -> AnalysisResponse:
 def list_analyses(
     db: Session = Depends(get_db),
 ):
-    statement = select(Analysis).order_by(
-        Analysis.created_at.desc()
+    statement = (
+        select(Analysis)
+        .order_by(
+            Analysis.created_at.desc()
+        )
     )
 
-    analyses = db.scalars(statement).all()
+    analyses = db.scalars(
+        statement
+    ).all()
 
     return [
         to_response(analysis)

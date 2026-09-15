@@ -4,3 +4,8 @@ python-multipart
 pydantic-settings
 sqlalchemy
 psycopg[binary]
+ultralytics
+torch
+torchvision
+opencv-python-headless
+numpy

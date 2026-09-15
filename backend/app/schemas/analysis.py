@@ -3,9 +3,17 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
+class BoundingBox(BaseModel):
+    x1: float
+    y1: float
+    x2: float
+    y2: float
+
+
 class DetectionResponse(BaseModel):
     label: str
     confidence: float
+    bbox: BoundingBox
 
 
 class AnalysisResponse(BaseModel):

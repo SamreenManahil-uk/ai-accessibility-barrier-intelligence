@@ -1,0 +1,241 @@
+Day 4 Frontend and User Experience Notes
+
+Project Name
+
+AI Accessibility Barrier Intelligence
+
+Product Name
+
+PathSense AI
+
+Day 4 Objective
+
+Day 4 focused on creating a professional and advanced frontend for the project. The main aim was to transform the AI backend into a complete user facing product with a modern visual identity, strong usability, responsive behaviour and accessibility focused design.
+
+Frontend Technologies
+
+React
+
+TypeScript
+
+Vite
+
+Tailwind CSS
+
+React Router
+
+Axios
+
+TanStack Query
+
+Framer Motion
+
+Recharts
+
+React Dropzone
+
+Lucide React
+
+Sonner
+
+Vitest
+
+React Testing Library
+
+Visual Design
+
+The frontend was intentionally designed to look different from a traditional dashboard.
+
+The design uses a warm off white and cream style in light mode.
+
+Dark mode uses charcoal and graphite tones.
+
+Amber and yellow are used as the main product colours.
+
+Red is used for high risk states.
+
+Teal is used for safe or supportive states.
+
+The interface uses large rounded cards, soft shadows, floating navigation, editorial typography and spacious layouts.
+
+The project does not use a sidebar based design.
+
+Discover Page
+
+The Discover page acts as the landing page for PathSense AI.
+
+It introduces the product and explains the purpose of the accessibility detection system.
+
+The page includes project information, real model metrics, dataset information, feature cards and a barrier carousel.
+
+The page displays real model values such as precision and mean average precision.
+
+Barrier Carousel
+
+A visual carousel was added to introduce the main accessibility related classes.
+
+Examples include Stairs, Pothole, Obstacle, Ramp, Road Barrier and Pole.
+
+The values shown in the carousel are interface examples only and are not live AI predictions.
+
+Vision Lab
+
+Vision Lab is the main AI interaction page.
+
+Users can upload an image using drag and drop or file selection.
+
+Supported image formats include JPG, PNG and WebP.
+
+The selected image is previewed before analysis.
+
+The user can run the AI model and receive object detections, confidence values, risk level, risk score and reasons for the result.
+
+A loading and scanning state is shown while the analysis is running.
+
+Bounding Box Integration
+
+Real object detection bounding boxes were added to the application.
+
+The backend returns the coordinates of each detected object.
+
+The frontend maps those coordinates correctly to the displayed image.
+
+The system takes account of original image dimensions, rendered image size and image scaling.
+
+The bounding boxes remain aligned when the screen size changes.
+
+Verified Example
+
+The test image risky test dot jpg was successfully analysed.
+
+The model detected Vehicle with approximately ninety percent confidence.
+
+The model detected Road Barrier with approximately seventy two percent confidence.
+
+A lower confidence Vehicle prediction was also returned.
+
+The final risk level was HIGH.
+
+The risk score was six point three nine.
+
+This confirmed that the model, backend and frontend were connected correctly.
+
+Low Confidence Detection
+
+Low confidence detections are clearly marked in the interface.
+
+This improves transparency and helps users understand that not every prediction has the same level of reliability.
+
+Scan Library
+
+The Scan Library page displays saved analysis history from PostgreSQL.
+
+Users can search previous scans.
+
+Users can filter scans by risk level.
+
+Each record displays the image name, date, risk level, risk score and detection summary.
+
+A detailed side panel provides additional information about each analysis.
+
+The page includes loading states, empty states and error handling.
+
+Insights Page
+
+The Insights page analyses the stored application history.
+
+It displays total completed scans.
+
+It displays the average risk score.
+
+It displays total detected objects.
+
+It includes visual charts for risk distribution and frequently detected classes.
+
+The charts use real database records.
+
+Barrier Guide
+
+The Barrier Guide explains the twelve classes recognised by the current model.
+
+The classes are Crosswalk, Obstacle, Pole, Pothole, Ramp, Road Barrier, Sidewalk, Stairs, Tree, Vehicle, bench and fire hydrant.
+
+Each class includes an explanation of its possible accessibility relevance.
+
+The page also explains that the risk system is a project specific heuristic and not a formal accessibility certification.
+
+Model Lab
+
+The Model Lab page presents the real held out test performance of the trained model.
+
+Precision is seventy one point two percent.
+
+Recall is fifty two point eight percent.
+
+Mean average precision at point five is fifty seven point four percent.
+
+Mean average precision from point five to point nine five is thirty eight point nine percent.
+
+The page also displays class level performance.
+
+The Ramp class is clearly presented as a weak class because of limited training examples.
+
+The page also explains that external images may differ from the model training data.
+
+Preferences Page
+
+The Preferences page allows the user to switch between light mode and dark mode.
+
+The selected theme is stored in the browser.
+
+The page also displays backend connection status.
+
+It explains the current scope of the model.
+
+Custom Error Page
+
+A custom four zero four page was added.
+
+The page allows users to return to the home page or Vision Lab.
+
+This improves navigation and user experience.
+
+Accessibility Improvements
+
+Visible keyboard focus styles were added.
+
+Reduced motion support was added.
+
+Loading states include screen reader announcements.
+
+Bounding boxes include accessibility labels.
+
+The layout supports different screen sizes.
+
+The interface includes clear colour based risk states.
+
+Responsive Design
+
+The interface was improved for desktop, tablet and mobile screens.
+
+Vision Lab image height changes according to screen size.
+
+Navigation and content cards adapt to smaller displays.
+
+Frontend Testing
+
+Vitest and React Testing Library were configured.
+
+Tests were created for the Barrier Guide page.
+
+Tests were created for the custom error page.
+
+The frontend test suite passed successfully.
+
+The production frontend build also passed successfully.
+
+Day 4 Result
+
+By the end of Day 4, the project had become a complete user facing AI application.
+
+The frontend included live AI analysis, bounding boxes, risk results, history, analytics, model transparency, accessibility information, responsive design and light and dark themes.
